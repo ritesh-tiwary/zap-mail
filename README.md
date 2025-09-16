@@ -28,6 +28,8 @@ Deploy it on **Heroku, Render, or any server** and start zapping emails ⚡ in m
 zap-mail/
  ├── main.py
  ├── requirements.txt
+ ├── Procfile
+ ├── Dockerfile
  ├── README.md
  ├── .gitignore
  └── LICENSE
@@ -79,7 +81,7 @@ body:
 ```json
 {
   "status": "success",
-  "message": "Send successfully"
+  "message": "Send successfully to recipient@example.com"
 }
 ```
 
