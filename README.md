@@ -54,8 +54,14 @@ pip install -r requirements.txt
 ```
 
 #### 3️⃣ Run the App
-uvicorn main:app --reload
-
+```bash
+  uvicorn main:app --reload
+```
+```bash
+  curl -X POST "http://localhost:8000/send" \
+    -H "Content-Type: application/json" \
+    -d '{"to":"recipient@example.com","subject":"Hello","body":"Hi from FastAPI","html":false}'
+```
 ---
 ### 📡 API Endpoints
 **POST:** /send
@@ -88,13 +94,26 @@ body:
 ---
 ### ☁️ Deploy to the Cloud
 #### 🔹 Deploy on Render
-**1.** Fork this repo  
-**2.** Create a new Web Service on Render  
-**3.** Add your environment variables  
-**4.** Deploy 🚀  
+**1.** Push this repo to GitHub. \
+**2.** Login to Render. \
+**3.** Create New Web Service → Connect your repo. \
+**4.** Set:
+- **Build Command:** pip install -r requirements.txt
+- **Start Command:** gunicorn -k uvicorn.workers.UvicornWorker main:app --bind 0.0.0.0:$PORT
+- **Environment Variables:** SMTP_USER, SMTP_PASSWORD
+
+**5.** Deploy 🚀
+  
 
 #### 🔹 Deploy on Heroku
 ```bash
+curl https://cli-assets.heroku.com/install.sh | sh
+echo "export HEROKU_API_KEY=your_api_key_here" >> ~/.bashrc
+source ~/.bashrc
+
+heroku auth:whoami   # check current user
+heroku auth:token    # verify token works
+
 heroku create zapmail-app
 git push heroku main
 ```
