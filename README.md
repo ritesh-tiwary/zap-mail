@@ -62,6 +62,11 @@ pip install -r requirements.txt
     -H "Content-Type: application/json" \
     -d '{"to":"recipient@example.com","subject":"Hello","body":"Hi from FastAPI","html":false}'
 ```
+```bash
+curl -X POST "https://zapmail-app.onrender.com/send" \
+    -H "Content-Type: application/json" \
+    -d '{"to":"recipient@example.com","subject":"Hello","body":"Hi from FastAPI","html":false}'
+```
 ---
 ### 📡 API Endpoints
 **POST:** /send
