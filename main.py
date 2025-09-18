@@ -81,7 +81,7 @@ async def send_email(email_request: EmailRequest):
     try:
         # SMTPClient(settings.smtp_host, settings.smtp_port, settings.smtp_user, settings.smtp_password).Send(email_request)
         r = ResendClient(settings.resend_api_key).Send(email_request)
-        if not r:
+        if r != True:
             return r
     except smtplib.SMTPException as e:
         raise HTTPException(status_code=502, detail=f"SMTP error: {e}")
