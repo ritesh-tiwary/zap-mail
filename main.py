@@ -75,9 +75,6 @@ settings = Settings()
 
 @app.post("/send")
 async def send_email(email_request: EmailRequest):
-    if not settings.smtp_user or not settings.smtp_password:
-        raise HTTPException(status_code=500, detail="SMTP credentials are not configured on server.")
-
     try:
         # SMTPClient(settings.smtp_host, settings.smtp_port, settings.smtp_user, settings.smtp_password).Send(email_request)
         r = ResendClient(settings.resend_api_key).Send(email_request)
