@@ -60,12 +60,12 @@ pip install -r requirements.txt
 ```bash
   curl -X POST "http://localhost:8000/send" \
     -H "Content-Type: application/json" \
-    -d '{"to":"recipient@example.com","subject":"Hello","body":"Hi from FastAPI","html":false}'
+    -d '{"to":"recipient@example.com","subject":"Hello","body":"Hi from ⚡ ZapMail!!","html":false}'
 ```
 ```bash
-curl -X POST "https://zapmail-app.onrender.com/send" \
+curl -X POST "https://zap-mail-production.up.railway.app/send" \
     -H "Content-Type: application/json" \
-    -d '{"to":"recipient@example.com","subject":"Hello","body":"Hi from FastAPI","html":false}'
+    -d '{"to":"recipient@example.com","subject":"Hello from ⚡ ZapMail","body":"<p>Congrats on sending your first <strong>⚡ ZapMail</strong>!</p>"}'
 ```
 ---
 ### 📡 API Endpoints
