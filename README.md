@@ -65,7 +65,7 @@ pip install -r requirements.txt
 ```bash
 curl -X POST "https://zap-mail-production.up.railway.app/send" \
     -H "Content-Type: application/json" \
-    -d '{"to":"recipient@example.com","subject":"Hello from ⚡ ZapMail","body":"<p>Congrats on sending your first <strong>⚡ ZapMail</strong>!</p>"}'
+    -d '{"to":"ritesh.datascientist@gmail.com","subject":"Hello from ⚡ ZapMail","body":"<p>Congrats on sending your first <strong>⚡ ZapMail</strong>!</p>"}'
 ```
 ---
 ### 📡 API Endpoints

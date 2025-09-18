@@ -55,12 +55,15 @@ class ResendClient:
 
     def Send(self, email_request: EmailRequest) -> bool:
         resend.api_key = self.resend_api_key
-        r = resend.Emails.send({
-            "from": "info@spiritualtours.com <onboarding@resend.dev>",
-            "to": email_request.to,
-            "subject": email_request.subject,
-            "html": email_request.body
-        })
+        try:
+            r = resend.Emails.send({
+                "from": "info@spiritualtours.com <onboarding@resend.dev>",
+                "to": email_request.to,
+                "subject": email_request.subject,
+                "html": email_request.body
+            })
+        except resend.exceptions.ResendError as e:
+            return str(e)
         return True
 
 class FirestoreClient:...
@@ -77,8 +80,12 @@ async def send_email(email_request: EmailRequest):
 
     try:
         # SMTPClient(settings.smtp_host, settings.smtp_port, settings.smtp_user, settings.smtp_password).Send(email_request)
-        ResendClient(settings.resend_api_key).Send(email_request)
-        print(f"Send successfully to {email_request.to}")
+        r = ResendClient(settings.resend_api_key).Send(email_request)
+        if r == True:
+            print(f"Send successfully to {email_request.to}")
+        else:
+            print(f"Failed: {r}")
+            return r
     except smtplib.SMTPException as e:
         raise HTTPException(status_code=502, detail=f"SMTP error: {e}")
 
