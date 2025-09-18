@@ -28,7 +28,6 @@ Deploy it on **Heroku, Render, or any server** and start zapping emails ⚡ in m
 zap-mail/
  ├── main.py
  ├── requirements.txt
- ├── Procfile
  ├── Dockerfile
  ├── README.md
  ├── .gitignore
@@ -65,7 +64,7 @@ pip install -r requirements.txt
 ```bash
 curl -X POST "https://zap-mail-production.up.railway.app/send" \
     -H "Content-Type: application/json" \
-    -d '{"to":"ritesh.datascientist@gmail.com","subject":"Hello from ⚡ ZapMail","body":"<p>Congrats on sending your first <strong>⚡ ZapMail</strong>!</p>"}'
+    -d '{"to":"recipient@example.com","subject":"Hello from ⚡ ZapMail","body":"<p>Congrats on sending your first <strong>⚡ ZapMail</strong>!</p>"}'
 ```
 ---
 ### 📡 API Endpoints
