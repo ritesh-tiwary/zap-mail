@@ -123,6 +123,16 @@ heroku create zapmail-app
 git push heroku main
 ```
 
+#### 🔹 Deploy on railway.com
+```bash
+curl -fsSL https://railway.com/install.sh | sh
+echo "export RAILWAY_TOKEN=your_token" >> ~/.bashrc
+source ~/.bashrc
+
+railway login --browserless
+railway whoami   # check current user
+```
+
 ---
 ### 🛡️ Security Notes
 - Always use App Passwords with Gmail (not your main password)
