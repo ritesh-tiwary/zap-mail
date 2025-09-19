@@ -1,6 +1,6 @@
 # ⚡ ZapMail  
 
-![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?style=flat&logo=fastapi) ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python) ![SMTP](https://img.shields.io/badge/SMTP-Gmail-red?logo=gmail) ![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Python](https://img.shields.io/badge/Python-3.12%2B-blue?logo=python) ![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?style=flat&logo=fastapi) ![SMTP](https://img.shields.io/badge/SMTP-Gmail-red?logo=gmail) ![License](https://img.shields.io/badge/License-MIT-green.svg) [![GitHub issues](https://img.shields.io/github/issues/ritesh-tiwary/zap-store)](https://github.com/ritesh-tiwary/zap-store/issues) [![GitHub stars](https://img.shields.io/github/stars/ritesh-tiwary/zap-store)](https://github.com/ritesh-tiwary/zap-store/stargazers)
 
 
 ## ZapMail – Fast, Simple, Gmail-Powered Email API
