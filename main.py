@@ -2,7 +2,8 @@ import ssl
 import resend
 import smtplib
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from functools import lru_cache
+from fastapi import FastAPI, Header, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr, Field
 from email.message import EmailMessage
@@ -21,6 +22,7 @@ class Settings(BaseSettings):
     smtp_port: int = Field("SMTP_PORT")
     smtp_user: str = Field("SMTP_USER")
     smtp_password: str = Field("SMTP_PASSWORD")
+    secret_key: str = Field("SECRET_KEY")
     resend_api_key: str = Field("RESEND_API_KEY")
 
 class SMTPClient:
@@ -67,8 +69,6 @@ class ResendClient:
             return str(e)
         return True
 
-class FirestoreClient:...
-
 
 app = FastAPI(title="⚡ ZapMail")
 settings = Settings()
@@ -76,8 +76,13 @@ origins = ["http://localhost:8000", "https://spiritualtours.web.app", "https://s
 app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 
+@lru_cache
+def verify_secret(x_secret: str = Header(...)):
+    if x_secret != settings.secret_key:
+        raise HTTPException(status_code=412, detail="Invalid or missing secret")
+
 @app.post("/send")
-async def send_email(email_request: EmailRequest):
+async def send_email(email_request: EmailRequest, dep: None = Depends(verify_secret)):
     try:
         # SMTPClient(settings.smtp_host, settings.smtp_port, settings.smtp_user, settings.smtp_password).Send(email_request)
         r = ResendClient(settings.resend_api_key).Send(email_request)

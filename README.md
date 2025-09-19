@@ -1,4 +1,4 @@
-# ⚡ ZapMail  
+# ⚡ ZapMail
 
 ![Python](https://img.shields.io/badge/Python-3.12%2B-blue?logo=python) ![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?style=flat&logo=fastapi) ![SMTP](https://img.shields.io/badge/SMTP-Gmail-red?logo=gmail) ![License](https://img.shields.io/badge/License-MIT-green.svg) [![GitHub issues](https://img.shields.io/github/issues/ritesh-tiwary/zap-store)](https://github.com/ritesh-tiwary/zap-store/issues) [![GitHub stars](https://img.shields.io/github/stars/ritesh-tiwary/zap-store)](https://github.com/ritesh-tiwary/zap-store/stargazers)
 
@@ -58,11 +58,13 @@ pip install -r requirements.txt
 ```
 ```bash
   curl -X POST "http://localhost:8000/send" \
+    -H "X-Secret: xxxx" \
     -H "Content-Type: application/json" \
     -d '{"to":"recipient@example.com","subject":"Hello","body":"Hi from ⚡ ZapMail!!","html":false}'
 ```
 ```bash
 curl -X POST "https://zap-mail-production.up.railway.app/send" \
+    -H "X-Secret: xxxx" \
     -H "Content-Type: application/json" \
     -d '{"to":"recipient@example.com","subject":"Hello from ⚡ ZapMail","body":"<p>Congrats on sending your first <strong>⚡ ZapMail</strong>!</p>"}'
 ```
@@ -145,4 +147,4 @@ For major changes, please open an issue first to discuss what you’d like to ch
 
 ---
 ### 📜 License
-MIT License © 2025 – Made with ❤️ by the ZapMail community.
+MIT **[License](LICENSE)** © 2025 – Made with ❤️ by the **⚡ ZapMail** community.
